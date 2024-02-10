@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
     const navItems = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
         <li><Link to="/contact">Contact</Link></li>
     </>;
     return (
@@ -18,7 +19,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <Link to="/" className="btn btn-ghost text-2xl">
-                    <div>Carbonick</div>
+                    <div className="text-accent">Carbonick</div>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -27,7 +28,7 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-outline btn-accent">Appointment</a>
+                <button className="btn btn-outline btn-accent">Appointment</button>
             </div>
         </div>
     );
