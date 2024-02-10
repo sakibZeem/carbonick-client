@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import img from '../../assets/images/login/login.svg'
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
+    const {signIn} = useContext(AuthContext);
     
     const handleLogin = e => {
         e.preventDefault();
-
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
     }
 
     return (
@@ -36,6 +49,7 @@ const Login = () => {
                             <input type="submit" value="Login" className="btn btn-accent" />
                         </div>
                     </form>
+                    <p className='text-center my-4'>New to Carbonick? <Link to="/signup" className='text-accent'>Sign Up</Link></p>
                 </div>
             </div>
         </div>
